@@ -24,17 +24,21 @@ const BodyDetailsValidationSchema = zod.object({
 router.post("/Signup",async (req,res)=>{
 
     const requestBody = req.body
+    console.log(requestBody)
     const {success} = userDetailsValidationSchema.safeParse(requestBody)
+    console.log(success)
     if(!success){
-        res.json({
+        return res.json({
             message:"Incorrect Inputs"
         })
     }
-    const user = User.findOne({
+    const user = await User.findOne({
         username:requestBody.username
     })
-    if(user._id){
-        res.json({
+    
+    if(user){
+        
+        return res.json({
             message:'Email Already Exist'
         })
     }

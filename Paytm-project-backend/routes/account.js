@@ -44,12 +44,13 @@ router.post("/transaction" , authMiddleware , async (req,res)=>{
 })
 
 router.get("/balance" ,authMiddleware, async (req,res)=>{
-    userPassword = req.headers.password
-    userEmail = req.headers.username
+    userPassword = req.body.password
+    userEmail = req.body.username
     const user = await User.findOne({
         username:userEmail,
         password:userPassword
     })
+    console.log(user)
     const userBalance = await Account.findOne({
         userID:user._id
     })

@@ -1,15 +1,26 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter, Route,Routes } from 'react-router-dom'
+import {SignupPage} from './pages/SignupPage'
+import {SigninPage} from './pages/SigninPage'
+import {DashboardPage} from './pages/DashboardPage'
+import {SendMoneyPage} from './pages/SendMoneyPage'
+
 import './App.css'
-import Body from './xtz'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
-      <Body></Body>
+      <BrowserRouter>
+
+      <Routes>
+        <Route path='/signup' element={<SignupPage></SignupPage>}/>
+        <Route path='/signin' element={<SigninPage></SigninPage>}/>
+        <Route path='/dashboard' element={<DashboardPage></DashboardPage>}/>
+        <Route path='/send' element={<SendMoneyPage></SendMoneyPage>}/>
+      </Routes>
+      </BrowserRouter>
     </>
   )
 }
