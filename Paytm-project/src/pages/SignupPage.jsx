@@ -6,8 +6,11 @@ import { Heading } from "../components/HeadingCompo";
 import { InputBox } from "../components/InputBoxCompo";
 import { SubHeading } from "../components/SubHeadingCompo";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 export function SignupPage(){
+    const navigate = useNavigate()
     const [firstname , setFirstName] = useState("")
     const [lastname , setLastName] = useState("")
     const [username , setUsername] = useState("")
@@ -38,6 +41,9 @@ export function SignupPage(){
                             password:password
                         })
                         localStorage.setItem("token",response.data.token)
+                        if(response.data.message=== "User created Succesfully"){
+                            navigate("/dashboard")
+                        }
                     }} label={"Sign up"}></Button>
                 </div>
                 <ButtonWarn label={"Already have an account?"} buttontext={"Signin"} to={"/signin"}></ButtonWarn>

@@ -16,7 +16,7 @@ export function SigninPage(){
                 <div className="pt-4">
                     <Button label={"Sign in"}></Button>
                 </div>
-                <ButtonWarn label={"Not Registered?"} buttontext={"Signup"} to={"/signup"}></ButtonWarn>
+                <ButtonWarn label={"Not Registered?"} buttontext={"Signup"} to={"/"}></ButtonWarn>
             </div>
 
         </div>
